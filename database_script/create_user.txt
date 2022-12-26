@@ -1,0 +1,64 @@
+-- user tin
+create user tin identified by 123;
+alter user tin quota unlimited on users; 
+
+-- tạo tin_role
+create role tin_role;
+grant all privileges to tin_role;
+grant tin_role to tin;
+
+
+-- user xacthuc
+create user xacthuc identified by 123; 
+ 
+-- tạo xacthuc_role
+create role xacthuc_role;
+grant connect to xacthuc_role; 
+grant select, update on tin.passportdata to xacthuc_role;
+grant select on tin.resident to xacthuc_role;
+grant xacthuc_role to xacthuc;
+ 
+ 
+-- user xetduyet
+create user xetduyet identified by 123; 
+ 
+-- tạo xetduyet_role
+create role xetduyet_role;
+grant connect to xetduyet_role; 
+grant select, update on tin.passportdata to xetduyet_role;
+grant xetduyet_role to xetduyet;
+
+ 
+-- user luutru
+create user luutru identified by 123; 
+
+-- tạo luutru_role 
+create role luutru_role;
+grant connect to luutru_role; 
+grant select, update on tin.passportdata to luutru_role;
+grant luutru_role to luutru;
+
+
+-- user giamsat
+create user giamsat identified by 123; 
+
+-- tạo giamsat_role 
+create role giamsat_role;
+grant connect to giamsat_role; 
+grant select on tin.passportdata to giamsat_role;
+grant giamsat_role to giamsat;
+
+
+
+-- drop
+drop user tin cascade;
+drop user xacthuc cascade;
+drop user xetduyet cascade;
+drop user luutru cascade;
+drop user giamsat cascade;
+
+drop role tin_role;
+drop role xacthuc_role;
+drop role xetduyet_role;
+drop role luutru_role;
+drop role giamsat_role;

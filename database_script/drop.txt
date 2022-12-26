@@ -1,0 +1,41 @@
+drop user tin cascade;
+drop user xacthuc cascade;
+drop user xetduyet cascade;
+drop user luutru cascade;
+drop user giamsat cascade;
+
+drop role tin_role;
+drop role xacthuc_role;
+drop role xetduyet_role;
+drop role luutru_role;
+drop role giamsat_role;
+
+-- drop
+BEGIN 
+	DBMS_RLS.drop_policy   
+	(
+		object_schema		=> 'tin', 
+		object_name		=> 'PASSPORTDATA', 
+		policy_name		=> 'Bao_Mat_Select_Passportdata'
+	); 
+END;
+
+
+BEGIN 
+	DBMS_RLS.drop_policy   
+	(
+		object_schema		=> 'tin', 
+		object_name		=> 'PASSPORTDATA', 
+		policy_name		=> 'Bao_Mat_Update_Passportdata'
+	); 
+END;
+
+
+BEGIN 
+	DBMS_RLS.drop_policy   
+	(
+		object_schema		=> 'tin', 
+		object_name		=> 'RESIDENT', 
+		policy_name		=> 'Bao_Mat_Select_Resident'
+	); 
+END;

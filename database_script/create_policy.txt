@@ -1,0 +1,149 @@
+-- Bảo mật select cho PASSPORTDATA
+create or replace function bao_mat_select_passportdata (p_schema in varchar2, p_obj in varchar2)
+return varchar2 
+as 
+	roleUser number;
+begin
+    -- user tin
+    if USER='TIN' then
+		return '1=1';
+    end if;
+    
+	select role into roleUser from tin.taikhoan where UPPER(taikhoan.taikhoan)= (select user from dual);
+    -- xacthuc
+	if roleUser='0' then
+		return '1=1';
+    -- xet duyet
+    elsif roleUser='1' then
+		return '1=1';
+    -- luu tru
+    elsif roleUser='2' then
+		return '1=1';
+    -- giam sat
+    elsif roleUser='3' then
+		return '1=1';
+	else
+		return '1=2';
+	end if;
+end;
+
+BEGIN 
+	DBMS_RLS.add_policy 
+	(
+		object_schema			=> 'tin',
+		object_name			=> 'PASSPORTDATA',
+		policy_name        		=> 'Bao_Mat_Select_Passportdata',
+		policy_function    		=> 'bao_mat_select_passportdata',
+		statement_types    		=> 'SELECT'
+	); 
+END; 
+
+
+
+-- Bảo mật update cho PASSPORTDATA
+create or replace function bao_mat_update_passportdata (p_schema in varchar2, p_obj in varchar2)
+return varchar2 
+as 
+	roleUser number;
+begin
+	-- user tin
+    if USER='TIN' then
+		return '1=1';
+    end if;
+
+	select role into roleUser from tin.taikhoan where UPPER(taikhoan.taikhoan)= (select user from dual);
+    -- xacthuc
+	if roleUser='0' then
+		return '1=1';
+    -- xet duyet
+    elsif roleUser='1' then
+		return '1=1';
+    -- luu tru
+    elsif roleUser='2' then
+		return '1=1';
+    -- giam sat
+    elsif roleUser='3' then
+		return '1=2';
+	else
+		return '1=2';
+	end if;
+end;
+
+BEGIN 
+	DBMS_RLS.add_policy 
+	(
+		object_schema			=> 'tin',
+		object_name			=> 'PASSPORTDATA',
+		policy_name        		=> 'Bao_Mat_Update_Passportdata',
+		policy_function    		=> 'bao_mat_update_passportdata',
+		statement_types    		=> 'UPDATE'
+	); 
+END; 
+
+
+
+-- Bảo mật select cho RESIDENT
+create or replace function bao_mat_select_resident (p_schema in varchar2, p_obj in varchar2)
+return varchar2 
+as 
+	roleUser number;
+begin
+	-- user tin
+    if USER='TIN' then
+		return '1=1';
+    end if;
+
+	select role into roleUser from tin.taikhoan where UPPER(taikhoan.taikhoan)= (select user from dual);
+    -- xacthuc
+	if roleUser='0' then
+		return '1=1';
+	else
+		return '1=2';
+	end if;
+end;
+
+BEGIN 
+	DBMS_RLS.add_policy 
+	(
+		object_schema			=> 'tin',
+		object_name			=> 'RESIDENT',
+		policy_name        		=> 'Bao_Mat_Select_Resident',
+		policy_function    		=> 'bao_mat_select_resident',
+		statement_types    		=> 'SELECT'
+	); 
+END; 
+
+
+
+
+
+-- drop
+BEGIN 
+	DBMS_RLS.drop_policy   
+	(
+		object_schema		=> 'tin', 
+		object_name		=> 'PASSPORTDATA', 
+		policy_name		=> 'Bao_Mat_Select_Passportdata'
+	); 
+END;
+
+
+BEGIN 
+	DBMS_RLS.drop_policy   
+	(
+		object_schema		=> 'tin', 
+		object_name		=> 'PASSPORTDATA', 
+		policy_name		=> 'Bao_Mat_Update_Passportdata'
+	); 
+END;
+
+
+BEGIN 
+	DBMS_RLS.drop_policy   
+	(
+		object_schema		=> 'tin', 
+		object_name		=> 'RESIDENT', 
+		policy_name		=> 'Bao_Mat_Select_Resident'
+	); 
+END;
+
