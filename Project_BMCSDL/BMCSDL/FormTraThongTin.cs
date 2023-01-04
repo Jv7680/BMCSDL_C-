@@ -55,7 +55,17 @@ namespace BMCSDL
 
         private void buttonTimCMND_Click(object sender, EventArgs e)
         {
-            int CMND = int.Parse(textBoxCMND.Text);
+            int CMND;
+            try
+            {
+                CMND = int.Parse(textBoxCMND.Text);
+            }
+            catch
+            {
+                MessageBox.Show("Số CMND không hợp lệ!","Thông báo");
+                return;
+            } 
+            
 
             DataTable table = new DataTable();
             table = BLLTraThongTin.FindByCMND(CMND);

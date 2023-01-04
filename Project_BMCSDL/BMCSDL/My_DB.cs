@@ -22,7 +22,6 @@ namespace BMCSDL
         public OracleConnection getConnectionNV()
         {
             String x = "Data Source=(DESCRIPTION =" + "(ADDRESS = (PROTOCOL = TCP)(HOST = localhost)(PORT = 1521))" + "(CONNECT_DATA =" + "(SERVER = DEDICATED)" + "(SERVICE_NAME = ORCL)));" + "User Id=" + GlobalVariables.GlobalUserName + ";Password=" + GlobalVariables.GlobalPassword + ";";
-            //String x = "Data Source=(DESCRIPTION =" + "(ADDRESS = (PROTOCOL = TCP)(HOST = localhost)(PORT = 1521))" + "(CONNECT_DATA =" + "(SERVER = DEDICATED)" + "(SERVICE_NAME = ORCL)));" + "User Id=truong;Password=123;";
             OracleConnection conn = new OracleConnection(x);
             conn.Open();
 
@@ -33,7 +32,6 @@ namespace BMCSDL
         public void openConnectionNV()
         {
             String x = "Data Source=(DESCRIPTION =" + "(ADDRESS = (PROTOCOL = TCP)(HOST = localhost)(PORT = 1521))" + "(CONNECT_DATA =" + "(SERVER = DEDICATED)" + "(SERVICE_NAME = ORCL)));" + "User Id=" + GlobalVariables.GlobalUserName + ";Password=" + GlobalVariables.GlobalPassword + ";";
-            //String x = "Data Source=(DESCRIPTION =" + "(ADDRESS = (PROTOCOL = TCP)(HOST = localhost)(PORT = 1521))" + "(CONNECT_DATA =" + "(SERVER = DEDICATED)" + "(SERVICE_NAME = ORCL)));" + "User Id=truong;Password=123;";
             OracleConnection conn = new OracleConnection(x);
 
             conn.Open();
@@ -43,7 +41,6 @@ namespace BMCSDL
         public void closeConnectionNV()
         {
             String x = "Data Source=(DESCRIPTION =" + "(ADDRESS = (PROTOCOL = TCP)(HOST = localhost)(PORT = 1521))" + "(CONNECT_DATA =" + "(SERVER = DEDICATED)" + "(SERVICE_NAME = ORCLPDB.mshome.net)));" + "User Id=" + GlobalVariables.GlobalUserName + ";Password=" + GlobalVariables.GlobalPassword + ";";
-            //String x = "Data Source=(DESCRIPTION =" + "(ADDRESS = (PROTOCOL = TCP)(HOST = localhost)(PORT = 1521))" + "(CONNECT_DATA =" + "(SERVER = DEDICATED)" + "(SERVICE_NAME = ORCL)));" + "User Id=truong;Password=123;";
             OracleConnection conn = new OracleConnection(x);
 
 
@@ -62,7 +59,6 @@ namespace BMCSDL
         public void closeConnection()
         {
             String x = "Data Source=(DESCRIPTION =" + "(ADDRESS = (PROTOCOL = TCP)(HOST = localhost)(PORT = 1521))" + "(CONNECT_DATA =" + "(SERVER = DEDICATED)" + "(SERVICE_NAME = ORCL)));" + "User Id=tin;Password=123;";
-            //String x = "Data Source=(DESCRIPTION =" + "(ADDRESS = (PROTOCOL = TCP)(HOST = localhost)(PORT = 1521))" + "(CONNECT_DATA =" + "(SERVER = DEDICATED)" + "(SERVICE_NAME = ORCL)));" + "User Id=truong;Password=123;";
             OracleConnection conn = new OracleConnection(x);
 
 
