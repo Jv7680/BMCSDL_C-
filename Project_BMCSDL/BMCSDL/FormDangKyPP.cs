@@ -27,10 +27,29 @@ namespace BMCSDL
         private void buttonDangky_Click(object sender, EventArgs e)
         {
             string gender = "Nam";
+
+            //validate giới tính
             if (radioButtonNu.Checked)
             {
                 gender = "Nữ";
             }
+            else if(radioButtonNam.Checked)
+            {
+                gender = "Nam";
+            }    
+            else if(!radioButtonNam.Checked && !radioButtonNu.Checked)
+            {
+                MessageBox.Show("Bạn chưa nhập đủ thông tin!","Thông báo");
+                return;
+            }
+
+            //validate các mục khác
+            if (textBoxHoten.Text == "" || textBoxDiachi.Text == "" || textBoxCMND.Text == "" || textBoxDienthoai.Text == "" || textBoxEmail.Text =="")
+            {
+                MessageBox.Show("Bạn chưa nhập đủ thông tin!", "Thông báo");
+                return;
+            }
+
             mydb.openConnection();
 
             PASSPORTDATA.HOTEN = textBoxHoten.Text;
